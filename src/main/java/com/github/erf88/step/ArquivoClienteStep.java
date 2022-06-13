@@ -6,6 +6,7 @@ import org.springframework.batch.core.configuration.annotation.StepBuilderFactor
 import org.springframework.batch.item.ItemProcessor;
 import org.springframework.batch.item.ItemWriter;
 import org.springframework.batch.item.file.FlatFileItemReader;
+import org.springframework.batch.item.file.FlatFileItemWriter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -17,7 +18,7 @@ public class ArquivoClienteStep {
             StepBuilderFactory stepBuilderFactory,
             FlatFileItemReader<Cliente> clienteReader,
             ItemProcessor<Cliente, Cliente> clienteProcessor,
-            ItemWriter clienteWriter) {
+            FlatFileItemWriter<Cliente> clienteWriter) {
 
         return stepBuilderFactory
                 .get("validaClienteStep")

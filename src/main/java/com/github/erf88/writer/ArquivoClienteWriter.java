@@ -17,17 +17,7 @@ public class ArquivoClienteWriter {
     private Resource resource;
 
     @Bean
-    public MultiResourceItemWriter<Cliente> clienteWriter() {
-        return new MultiResourceItemWriterBuilder<Cliente>()
-                .name("clienteWriter")
-                .resource(resource)
-                .delegate(writer())
-                .itemCountLimitPerResource(50) // mesma quantidade do chunk
-                .resourceSuffixCreator(index -> "_" + index + ".txt")
-                .build();
-    }
-
-    private FlatFileItemWriter<Cliente> writer() {
+    public FlatFileItemWriter<Cliente> clienteWriter() {
         return new FlatFileItemWriterBuilder<Cliente>()
                 .name("clienteWriter")
                 .resource(resource)
